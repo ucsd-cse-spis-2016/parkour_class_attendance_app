@@ -8,12 +8,7 @@ import os
 app = Flask(__name__)
 app.debug = True
 
-mongostr = "mongodb://{}:{}@{}:{}".format(
-        os.environ['OPENSHIFT_MONGODB_DB_USERNAME'],
-        os.environ['OPENSHIFT_MONGODB_DB_PASSWORD'],
-        os.environ['OPENSHIFT_MONGODB_DB_HOST'],
-        os.environ['OPENSHIFT_MONGODB_DB_PORT'],
-    )
+mongostr = os.environ['MONGODB_URI']
 
 con = pymongo.MongoClient(mongostr)
 DB = con.classdemo
