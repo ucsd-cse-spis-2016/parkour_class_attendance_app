@@ -13,8 +13,8 @@ mongostr = os.environ['MONGODB_URI']
 con = pymongo.MongoClient(mongostr)
 DB = con.classdemo
 dao = ClassDAO(DB)
-coaches = dao.GetCoaches()
-valid_emails = [c['email'] for c in coaches]
+# coaches = dao.GetCoaches()
+# valid_emails = [c['email'] for c in coaches]
 
 g_auth = DB.authorization.find_one({"name":"google"})
 
