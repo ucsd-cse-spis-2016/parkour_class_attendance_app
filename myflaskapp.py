@@ -33,9 +33,9 @@ google = OAuth().remote_app('google',
                         access_token_method='POST',
                         access_token_params={'grant_type': 'authorization_code'},
                         #consumer_key=g_auth["consumer_key"],
-                        consumer_key=os.environ[GOOGLE_CLIENT_ID],
+                        consumer_key=os.environ['GOOGLE_CLIENT_ID'],
                         #consumer_secret=g_auth["consumer_secret"]
-                        consumer_secret=os.environ[GOOGLE_CLIENT_SECRET])
+                        consumer_secret=os.environ['GOOGLE_CLIENT_SECRET'])
 
 @app.route('/')
 def index():
