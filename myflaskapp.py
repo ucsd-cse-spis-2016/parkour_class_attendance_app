@@ -11,7 +11,7 @@ app.debug = True
 mongostr = os.environ['MONGODB_URI']
 
 con = pymongo.MongoClient(mongostr)
-DB = con.classdemo
+DB = con.heroku_vfs22s9f
 dao = ClassDAO(DB)
 # coaches = dao.GetCoaches()
 # valid_emails = [c['email'] for c in coaches]
