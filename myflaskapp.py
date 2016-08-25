@@ -18,7 +18,9 @@ valid_emails = [c['email'] for c in coaches]
 
 g_auth = DB.authorization.find_one({"name":"google"})
 
-app.secret_key = g_auth["secret_key"]
+# app.secret_key = g_auth["secret_key"]
+
+app.secret_key = os.environ['GOOGLE_CLIENT_SECRET']
 google = OAuth().remote_app('google',
                         base_url='https://www.google.com/accounts/',
                         authorize_url='https://accounts.google.com/o/oauth2/auth',
@@ -30,8 +32,10 @@ google = OAuth().remote_app('google',
                         access_token_url='https://accounts.google.com/o/oauth2/token',
                         access_token_method='POST',
                         access_token_params={'grant_type': 'authorization_code'},
-                        consumer_key=g_auth["consumer_key"],
-                        consumer_secret=g_auth["consumer_secret"])
+                        #consumer_key=g_auth["consumer_key"],
+                        consumer_key=os.environ[GOOGLE_CLIENT_ID],
+                        #consumer_secret=g_auth["consumer_secret"]
+                        consumer_secret=os.environ[GOOGLE_CLIENT_SECRET])
 
 @app.route('/')
 def index():
